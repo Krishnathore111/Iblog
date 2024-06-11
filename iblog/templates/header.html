@@ -1,0 +1,22 @@
+
+<!-- Dropdown Structure -->
+<ul id="dropdown1" class="dropdown-content">
+  {% for cat in cats %}  
+  <li><a href="/blog/category/{{cat.url}}">{{cat.title}}</a></li>
+ {%endfor %}
+  </ul>
+  <nav class="bg-primary">
+    <div class="container">
+        <div class="nav-wrapper">
+            <a href="/blog/" class="brand-logo">IBlogs</a>
+            <ul class="right hide-on-med-and-down">
+              <li><a href="{% url 'about' %}">About</a></li>
+              <li><a href="/admin">Admin</a></li>
+              <!-- Dropdown Trigger -->
+              <li><a class="dropdown-trigger" href="#!" data-target="dropdown1">Dropdown<i class="material-icons right">Categories</i></a></li>
+              <li><a href="{% url 'logout' %}">Logout</a></li>
+              <li><a href="">Welcome, {{ user.first_name }}</a></li>
+            </ul>
+          </div>
+    </div>
+  </nav>

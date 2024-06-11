@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+
+{%block title%} IBlog | Post{%endblock title%}
+
+{%block content%}
+<style>
+    .container-custom1 {
+width: 90%!important;
+margin: auto;
+}
+</style>
+<div class="container-custom1">
+<div class="row">
+    <div class="col s12 m10">
+        <h3>{{post.title}}</h3>
+        <p>{{post.cat.title}}</p>
+        <img src="/media/{{post.image}}" class="responsive-img" alt="">     
+        <br>
+        <p>
+            {{post.content|safe}}
+        </p>   
+    </div>
+    <div class="col s12 m2">
+        
+        {% for cat in cats%}
+
+        <div class="card-item" style="margin-left: 5px;">
+            <div class="image-container">
+                <img src="/media/{{cat.image}}" class="responsive-img">
+            </div>
+            <div class="card-content">
+                  <b>{{cat.title}}</b> 
+                <p class="truncate">{{cat.description}}</p>
+                <div class="container center-align mt20">
+                    <a href="/blog/category/{{cat.url}}" class="btn bg-primary">View</a>
+                </div>
+            </div>
+          
+        </div>
+        {% endfor %}
+
+    </div>
+</div>
+</div>
+
+{%endblock content%}
+    

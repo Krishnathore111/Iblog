@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+{%block title%} IBlog | Home{%endblock title%}
+
+{%block content%}
+<!-- for categories -->
+<div class="container-custom">
+    <!-- Set up your HTML -->
+    <div class="owl-carousel">
+
+        {% for cat in cats%}
+
+        <div class="card-item center-align mt20" style="margin-left: 5px;">
+            <div class="image-container" style="margin-top:auto;">
+                <a href="/blog/category/{{cat.url}}" class="btn bg-primary">
+                <img src="/media/{{cat.image}}" class="responsive-img"></a>
+            </div>
+            <br> <br><br> <br><br> <br><br> <br><br>
+            <div class="card-content">
+                <div class="card-title">
+                    <b>{{cat.title}}</b>
+                </div>
+                <p class="truncate">{{cat.description}}</p>
+                <div class="container center-align mt20">
+                </div>
+            </div>
+
+        </div>
+        {% endfor %}
+
+    </div>
+
+    <br>
+</div>
+
+<!-- For post -->
+<div class="container">
+    <div class="row">
+        <div class="col s12 m10 offset-m1"> <!-- Center the entire post block -->
+            {% for p in posts %}
+            <div class="row post-block"> <!-- Add a class for custom styling if needed -->
+                <div class="col s12 m7">
+                    <div class="post-content">
+                        {{p.content | truncatewords:60 | safe}}
+                    </div>
+
+                    <div class="mt20">
+                        <a href="/blog/post/{{p.url}}" class="btn bg-primary">Read More...</a>
+                    </div>
+                </div>
+                <div class="col s12 m5">
+                    <img src="/media/{{p.image}}" class="responsive-img mt20" style="margin-top: 20px;">
+                </div>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
+
+{%endblock content%}
